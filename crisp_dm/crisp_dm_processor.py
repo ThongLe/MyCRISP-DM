@@ -1,6 +1,6 @@
 from utils.exception import MyException
-from crisp_dm.helpers.data_preparation_helper import DataPrepairationHelper
-from crisp_dm.helpers.data_understanding_helper import DataUnderstandingHelper
+from crisp_dm.helpers.data_preparation_helper import DataUnderstandingHelper
+from crisp_dm.helpers.data_understanding_helper import DataPreparationHelper
 from crisp_dm.helpers.modeling_helper import ModelingHelper
 from crisp_dm.helpers.evaluating_helper import EvaluatingHelper
 
@@ -10,10 +10,10 @@ class CRISPDMProcessor:
         self.evaluation_func = evaluation_func
 
         # Step 1
-        self.data_preparation_helper = DataPrepairationHelper()
+        self.data_understanding_helper = DataUnderstandingHelper()
 
         # Step 2
-        self.data_understanding_helper = DataUnderstandingHelper()
+        self.data_preparation_helper = DataPreparationHelper()
         self.parse_X = parse_X
         self.parse_y = parse_y
 
@@ -26,7 +26,7 @@ class CRISPDMProcessor:
         # ==================================
 
         self.draw_data = None
-        self.prepaired_data = None
+        self.understood_data = None
         self.model = None
         self.X = None
         self.y = None
@@ -38,10 +38,10 @@ class CRISPDMProcessor:
         pass
 
     def set_data_preparation_helper(self, helper):
-        self.data_preparation_helper = helper
+        self.data_understanding_helper = helper
 
     def set_data_understanding_helper(self, helper):
-        self.data_understanding_helper = helper
+        self.data_preparation_helper = helper
 
     def set_modeling_helper(self, helper):
         self.modeling_helper = helper
@@ -51,7 +51,7 @@ class CRISPDMProcessor:
 
     def validate(self):
         if (self.draw_data is None) and \
-            (self.prepaired_data is None) and \
+            (self.understood_data is None) and \
                 (self.X is None or self.y is None):
             raise MyException("Missing draw data!")
 
@@ -63,15 +63,15 @@ class CRISPDMProcessor:
                 for step in range(self.steps):
                     print 'Step', step, ":"
 
-                    print ' - Data prepairation:'
-
-                    if self.draw_data is not None:
-                        self.prepaired_data = self.data_preparation_helper.process(self.draw_data)
-
                     print ' - Data understanding:'
 
-                    if self.prepaired_data is not None:
-                        self.X, self.y = self.data_understanding_helper.process(self.prepaired_data, self.parse_X, self.parse_y)
+                    if self.draw_data is not None:
+                        self.understood_data = self.data_understanding_helper.process(self.draw_data)
+
+                    print ' - Data prepairation:'
+
+                    if self.understood_data is not None:
+                        self.X, self.y = self.data_preparation_helper.process(self.understood_data, self.parse_X, self.parse_y)
 
                     print ' - Modeling:'
 

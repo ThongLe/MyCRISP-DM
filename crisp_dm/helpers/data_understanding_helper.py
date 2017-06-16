@@ -1,7 +1,7 @@
 from crisp_dm.helpers.data_processing_helper import DataProcessingHelper
 from utils.exception import MyException
 
-class DataUnderstandingHelper(DataProcessingHelper):
+class DataPreparationHelper(DataProcessingHelper):
     def __init__(self):
         pass
 

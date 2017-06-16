@@ -20,7 +20,7 @@ print '============================================'
 print 'Processor 2:'
 processor_2 = CRISPDMProcessor(2, evaluation_func)
 
-processor_2.prepaired_data = [[0, 0], [1, 1], [0, 1]]
+processor_2.understood_data = [[0, 0], [1, 1], [0, 1]]
 processor_2.parse_X = lambda dt: dt[0:-1]
 processor_2.parse_y = lambda dt: dt[-1]
 processor_2.model = linear_model.Lasso(alpha=0.1)
