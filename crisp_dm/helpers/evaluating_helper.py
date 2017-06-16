@@ -18,7 +18,7 @@ class EvaluatingHelper(DataProcessingHelper):
 
     def run(self, *args):
         y, y_hat = args[0], args[1]
-        return self.cost(y, y_hat)
+        return self.errors(y, y_hat)
 
-    def cost(self, y, y_hat):
-        return np.linalg.norm(np.array(y) - np.array(y_hat), 2)
+    def errors(self, y, y_hat):
+        return float(np.linalg.norm(np.array(y) - np.array(y_hat), 1)) / len(y)

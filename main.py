@@ -27,7 +27,7 @@ processor_2.model = linear_model.Lasso(alpha=0.1)
 
 processor_2.process()
 
-# Test 2
+# Test 3
 print '============================================'
 print '============================================'
 print 'Processor 3:'
