@@ -1,8 +1,8 @@
 from utils.exception import MyException
-from crisp_dm.process_stage.data_preparation_helper import DataPrepairationHelper
-from crisp_dm.process_stage.data_understanding_helper import DataUnderstandingHelper
-from crisp_dm.process_stage.modeling_helper import ModelingHelper
-from crisp_dm.process_stage.evaluating_helper import EvaluatingHelper
+from crisp_dm.helpers.data_preparation_helper import DataPrepairationHelper
+from crisp_dm.helpers.data_understanding_helper import DataUnderstandingHelper
+from crisp_dm.helpers.modeling_helper import ModelingHelper
+from crisp_dm.helpers.evaluating_helper import EvaluatingHelper
 
 class CRISPDMProcessor:
     def __init__(self, steps=1, evaluation_func=None, parse_X=lambda x: x, parse_y=lambda y: y):

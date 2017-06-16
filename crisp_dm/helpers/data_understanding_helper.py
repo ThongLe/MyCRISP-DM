@@ -1,4 +1,4 @@
-from crisp_dm.process_stage.data_processing_helper import DataProcessingHelper
+from crisp_dm.helpers.data_processing_helper import DataProcessingHelper
 from utils.exception import MyException
 
 class DataUnderstandingHelper(DataProcessingHelper):
